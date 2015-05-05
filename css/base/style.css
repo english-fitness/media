@@ -1,0 +1,111 @@
+@import "bootstrap.icon.css";
+@import "bootstrap.css";
+@import "bootstrap-responsive.css";
+@import "common.css";
+
+/**
+* Global WellCart Styles
+*/
+a {
+  color: #325da7;
+}
+.btn-primary {
+    background-color: #325da7;
+    border-color: #325da7;
+    color: #FFFFFF;
+}
+.form-element-container {
+    display: block;
+    padding-top: 4px !important;
+    margin-bottom: 2px !important;
+    border-bottom: #ededed dashed 1px;
+}
+textarea {
+    height: 15em;
+    width: 100%;
+}
+form label {
+    font-weight: bold;
+    color: #333;
+}
+/* Noscript Notice */
+.noscript {
+    border: 1px solid #ddd;
+    border-width: 0 0 1px;
+    background: #ffff90;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    color: #2f2f2f;
+}
+
+.noscript .noscript-inner {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 12px 0 12px;
+    background: url(../img/i_notice.gif) 20px 50% no-repeat;
+}
+
+.noscript p {
+    margin: 0;
+}
+
+/* Cookie Notice */
+.notice-cookie {
+    border-bottom: 1px solid #cfcfcf;
+    background: #ffff90;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    color: #2f2f2f;
+}
+
+.notice-cookie .notice-inner {
+    width: 870px;
+    margin: 0 auto;
+    padding: 12px 0 12px 80px;
+    background: url(../img/i_notice.gif) 20px 25px no-repeat;
+    text-align: left;
+}
+
+.notice-cookie .notice-inner p {
+    margin: 0 0 10px;
+    border: 1px dotted #cccc73;
+    padding: 10px;
+}
+span.mark-invalid,
+span.required {
+    font-weight: bold;
+    color: #C60F13;
+}
+
+label.error {
+    color: #C60F13 !important;
+    font-size: smaller !important;
+    font-weight: normal !important;
+}
+
+label.hint {
+    font-size: smaller !important;
+    font-weight: normal !important;
+    color: #8F8F8F!important;
+}
+
+.loading {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999999999;
+    background: #eeeeee;
+    padding: 3px 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+input[readonly],
+select[readonly],
+textarea[readonly]{
+  cursor: default;
+  background-color: #eeeeee;
+}
+
