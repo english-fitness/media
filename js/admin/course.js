@@ -49,12 +49,12 @@ function ajaxLoads(jsonParams, displayElement, ajaxPostUrl){
 function checkCourseValidate(){
 	var subject_id, title, number, start_date, checkvalid;
 	subject_id = $("#Course_subject_id").val();
-	title = $("#Course_title").val();
+	//title = $("#Course_title").val();
 	wnumber = $("#numberSessionPerWeek").val();
 	totalSession = $("#numberOfSession").val();
 	start_date = $("#startDate").val();
 	checkvalid = true;
-	if(subject_id=="" || title=="" || wnumber=="" || start_date=="" || totalSession<0 || totalSession>200){
+	if(subject_id=="" || wnumber=="" || start_date=="" || totalSession<0 || totalSession>200){
 		checkvalid = false;
 	}else{
 		if(!(start_date>=currentDate && start_date<="2100-01-01")){
