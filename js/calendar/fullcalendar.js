@@ -6364,11 +6364,40 @@ TimeGrid.mixin({
 		for (i = 0; i < this.colCnt; i++) {
 			segCols.push([]);
 		}
+		
+		var occupiedSlots = [];
 
 		for (i = 0; i < segs.length; i++) {
-			segCols[segs[i].col].push(segs[i]);
+			var col = segs[i].col;
+			
+			if (occupiedSlots[col]){
+				var slots = occupiedSlots[col];
+				for (x in slots){
+					if (segs[i].event.start.diff(slots[x].start) == 0 && slots[x].placeholder){
+						// console.log('kill it');
+						var index = segCols[col].indexOf(slots[x].segment)
+						// console.log("he's here "+index);
+						if (index > -1){
+							segCols[col].splice(index, 1);
+						}
+					}
+				}
+			} else {
+				occupiedSlots[col] = [];
+			}
+			
+			segCols[col].push(segs[i]);
+			
+			var slot = {
+				start: segs[i].event.start,
+				segment: segs[i],
+				placeholder:(segs[i].event.className == 'reservedSlot') ? true : false,
+			}
+			occupiedSlots[col].push(slot);
 		}
-
+		
+		// console.log(occupiedSlots);
+		
 		return segCols;
 	}
 
