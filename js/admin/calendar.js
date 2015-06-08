@@ -32,7 +32,7 @@ var CalendarSessionHandler = {
 				var minuteSelection = elementCreator.select({id:"startMin", name:"startMin", style:"width:55px; align:center"}, minuteOptions);
 				
 				
-                var form = formCreator.getForm({"id":"newSessionForm","action":action,"method":"post","class":"myFormPopup"});
+                var form = formCreator.getForm({"id":"newSessionForm","method":"post","class":"myFormPopup"});
                 form += formCreator.rowForm("Chủ đề buổi học:",elementCreator.input({"type":"text","name":"Session[subject]"}));
 				form += formCreator.rowForm("Học sinh:", elementCreator.input({"id":"ajaxSearchUser","type":"text", "class":"form-control class_email"}));
 				form += formCreator.rowForm("Khóa học:", elementCreator.select({"id":"courseSelect", "name":"Session[course_id]"}, elementCreator.option("", "Chọn khóa học")));
@@ -40,13 +40,16 @@ var CalendarSessionHandler = {
 				form += formCreator.rowForm("Thời gian:", hourSelection + 'Giờ&nbsp&nbsp' + minuteSelection + ' Phút');
 				form += "<input type='hidden' name='Session[plan_duration]' value='30'></input>";
 				form += "<input type='hidden' name='Session[teacher_id]' value="+teacher+"></input>";
-                form += formCreator.endForm({"id":"create","name":"save"},"Hoàn Thành");
+                // form += formCreator.endForm({"id":"createSession","name":"save"},"Hoàn Thành");
+				form += formCreator.rowForm("&nbsp;","<button id='createSession'>Hoàn thành</button>");
+				form += '</form>';
                 return form;
             }
         });
 		
-		$('#newSessionForm').bind('submit', function (e){
+		$('#createSession').on('click', function(e){
 			ajaxCreateSession(action, submitCallback);
+			removePopupByID('popupAll');
 			e.preventDefault();
 			return false;
 		});
@@ -72,24 +75,26 @@ var CalendarSessionHandler = {
 }
 
 function ajaxCreateSession(action, callback){
+	console.log("i'm on it");
 	$.ajax({
 		url: action,
 		type:'post',
+		data:$('#newSessionForm').serialize(),
 		success: callback(),
 	});
 }
 
 //B. Calendar display and timezone handling
 
-var startTime = ['11:00', '11:40', '12:20', '13:00', '13:40', '14:20', '15:00', '15:40', '16:20',
+var startTime = ['09:00', '09:40' ,'10:20','11:00', '11:40', '12:20', '13:00', '13:40', '14:20', '15:00', '15:40', '16:20',
 				'17:00', '17:40', '18:20', '19:00', '19:40', '20:20', '21:00', '21:40', '22:10'];
 				
-var endTime = ['11:30', '12:10', '12:50', '13:30', '14:10', '14:50', '15:30', '16:10', '16:50',
+var endTime = ['09:30', '10:10', '10:50','11:30', '12:10', '12:50', '13:30', '14:10', '14:50', '15:30', '16:10', '16:50',
 				'17:30', '18:10', '18:50', '19:30', '20:10', '20:50', '21:30', '22:10', '22:50'];
 
 function parseTimeslot(slotNumber){
-	var dayIndex = Math.floor(slotNumber/18);
-	var slotIndex = slotNumber - dayIndex*18;
+	var dayIndex = Math.floor(slotNumber/21);
+	var slotIndex = slotNumber - dayIndex*21;
 
 	//we want monday to be the first day (day 0), so sunday must be the last one, but it is actually 'day 0' so...
 	//so silly
@@ -97,8 +102,6 @@ function parseTimeslot(slotNumber){
 		day: (dayIndex != 6) ? dayIndex + 1 : 0,
 		time: slotIndex,
 	};
-	
-	//put timezone conversion code here for teacher script
 	
 	return timeslot;
 }
@@ -202,51 +205,6 @@ function convertAvailableSlotByTimezone(timeslot, from, to){
 	return result;
 }
 
-function convertTimezone(day, time, from, to){
-	var newTime = {
-		day: day,
-		time: time,
-	};
-	
-	if (from == to)
-		return newTime;
-	
-	var parsed = time.split(':');
-	var hour = parseInt(parsed[0]);
-	var minute = parseInt(parsed[1]);
-	
-	var offset = to - from;
-	
-	var newHour;
-	var newDay;
-	
-	if ((hour + offset) > 24){
-		newHour = offset - (24 - hour);
-		if (day == 6){
-			newDay = 0;
-		} else {
-			newDay = day + 1;
-		}
-	} else if ((hour + offset) < 0){
-		newHour = 24 + hour + offset;
-		if (day == 0){
-			newDay = 6
-		} else {
-			newDay = day - 1;
-		}
-	} else {
-		newHour = hour + offset;
-		newDay = day;
-	}
-	
-	newTime = {
-		day: newDay,
-		time: newHour + ':' + minute,
-	};
-	
-	return newTime;
-}
-
 function convertRangeByTimezone(minTime, maxTime, from, to){
 	var result;
 
@@ -287,7 +245,7 @@ function convertRangeByTimezone(minTime, maxTime, from, to){
 	//we also need to disable the range in between, even more annoying (╯°□°）╯︵ ┻━┻
 	if (minHour < maxHour){
 		//TODO: it does mess up the timeslot so do remember to change the minute part
-		//Hint: check if offset is odd or even
+		//Update: done
 		result = {
 			minTime: minHour + ":" + minTimeNumbers[1],
 			maxTime: maxHour + ":" + maxTimeNumbers[1],
