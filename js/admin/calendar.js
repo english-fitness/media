@@ -1,6 +1,6 @@
 //A. Calendar pop-up and forms handling
 var CalendarSessionHandler = {
-	newSession: function(preset, action, options){
+	newSession: function(preset, action, submitCallback, options){
 		var start = preset.start;
 		var day = start.format('YYYY-MM-DD');
 		var startHour = start.format('H');
@@ -36,14 +36,20 @@ var CalendarSessionHandler = {
                 form += formCreator.rowForm("Chủ đề buổi học:",elementCreator.input({"type":"text","name":"Session[subject]"}));
 				form += formCreator.rowForm("Học sinh:", elementCreator.input({"id":"ajaxSearchUser","type":"text", "class":"form-control class_email"}));
 				form += formCreator.rowForm("Khóa học:", elementCreator.select({"id":"courseSelect", "name":"Session[course_id]"}, elementCreator.option("", "Chọn khóa học")));
-				form += formCreator.rowForm("Ngày học:", elementCreator.input({"type":"text", "name":"Session[plan_start]", "value":day}));
+				form += formCreator.rowForm("Ngày học:", elementCreator.input({"type":"text", "name":"Session[plan_start]", "readonly":"true", "value":day}));
 				form += formCreator.rowForm("Thời gian:", hourSelection + 'Giờ&nbsp&nbsp' + minuteSelection + ' Phút');
 				form += "<input type='hidden' name='Session[plan_duration]' value='30'></input>";
 				form += "<input type='hidden' name='Session[teacher_id]' value="+teacher+"></input>";
-                form += formCreator.endForm({"name":"save"},"Hoàn Thành");
+                form += formCreator.endForm({"id":"create","name":"save"},"Hoàn Thành");
                 return form;
             }
         });
+		
+		$('#newSessionForm').bind('submit', function (e){
+			ajaxCreateSession(action, submitCallback);
+			e.preventDefault();
+			return false;
+		});
 		
 		var selectedHour = $('#startHour').val();
 		$('#startHour option').sort(function(a,b){
@@ -63,6 +69,14 @@ var CalendarSessionHandler = {
 		}).appendTo('#startMin');
 		$('#startMin').val(selectedMin);
 	}
+}
+
+function ajaxCreateSession(action, callback){
+	$.ajax({
+		url: action,
+		type:'post',
+		success: callback(),
+	});
 }
 
 //B. Calendar display and timezone handling
