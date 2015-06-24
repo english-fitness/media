@@ -1,0 +1,26 @@
+.calendar-td{
+    border: 1px solid;
+    text-align: center;
+}
+.calendar-th{
+    width: 150px;
+    border: 1px solid;
+    text-align: center;
+    background: buttonface;
+}
+.gui{
+    margin: 15px;
+    padding: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.calendar-availble{
+    background: #0e90d2;
+}
+.calendar-availble:hover{
+    background: white;
+}
+.calendar-time{
+    background: buttonface;
+    width: 200px;
+}
