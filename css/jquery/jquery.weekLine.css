@@ -1,0 +1,30 @@
+﻿/* weekLine jquery-ui css*/
+
+.ui-WeekDays a
+{
+    padding: 2px 3px !important;
+}
+
+.ui-WeekDays a:first-child
+{
+	border-radius: 20% 0 0 20% !important;
+    padding: 2px 3px 2px 6px !important;
+}
+
+.ui-WeekDays a:last-child
+{
+	border-radius: 0 20% 20% 0 !important;
+    padding: 2px 6px 2px 3px !important;
+}
+
+.ui-WeekDays a:hover
+{
+	border-style: solid !important;
+	border-width: 1px !important;
+}
+
+.ui-WeekDays .ui-state-active
+{
+    border-style: solid !important;
+	border-width: 1px !important;
+}
