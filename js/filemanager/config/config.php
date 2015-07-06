@@ -66,7 +66,7 @@ $access_keys = array('myPrivateKey','someoneElseKey');
 // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS
 //--------------------------------------------------------------------------------------------------------
 
-$MaxSizeUpload = 5; //Mb
+$MaxSizeUpload = 30; //Mb
 
 // SERVER OVERRIDE
 if ((int)(ini_get('post_max_size')) < $MaxSizeUpload){
