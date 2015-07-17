@@ -237,9 +237,9 @@ $config = array(
 	'copy_cut_dirs'                           => true, // for copy/cut directories
 	'chmod_files'                             => false, // change file permissions
 	'chmod_dirs'                              => false, // change folder permissions
-	'preview_text_files'                      => true, // eg.: txt, log etc.
-	'edit_text_files'                         => true, // eg.: txt, log etc.
-	'create_text_files'                       => true, // only create files with exts. defined in $editable_text_file_exts
+	'preview_text_files'                      => false, // eg.: txt, log etc.
+	'edit_text_files'                         => false, // eg.: txt, log etc.
+	'create_text_files'                       => false, // only create files with exts. defined in $editable_text_file_exts
 
 	// you can preview these type of files if $preview_text_files is true
 	'previewable_text_file_exts'              => array( 'txt', 'log', 'xml', 'html', 'css', 'htm', 'js' ),

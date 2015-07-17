@@ -27,8 +27,6 @@ if ($isAdmin){
 	$duplicate_files = TRUE;
 	$copy_cut_files	 = TRUE; // for copy/cut files
 	$copy_cut_dirs	 = TRUE; // for copy/cut directories
-	$edit_text_files = true;
-	$create_text_files = true;
 	$edit_image		 = true;
 } else {
 	$delete_files	 = false;
@@ -40,8 +38,6 @@ if ($isAdmin){
 	$duplicate_files = false;
 	$copy_cut_files	 = false; // for copy/cut files
 	$copy_cut_dirs	 = false; // for copy/cut directories
-	$edit_text_files = false;
-	$create_text_files = false;
 	$edit_image		 = false;
 }
 
@@ -264,9 +260,9 @@ $config = array(
 	'copy_cut_dirs'                           => $copy_cut_dirs, // for copy/cut directories
 	'chmod_files'                             => false, // change file permissions
 	'chmod_dirs'                              => false, // change folder permissions
-	'preview_text_files'                      => true, // eg.: txt, log etc.
-	'edit_text_files'                         => $edit_text_files, // eg.: txt, log etc.
-	'create_text_files'                       => $create_text_files, // only create files with exts. defined in $editable_text_file_exts
+	'preview_text_files'                      => false, // eg.: txt, log etc.
+	'edit_text_files'                         => false, // eg.: txt, log etc.
+	'create_text_files'                       => false, // only create files with exts. defined in $editable_text_file_exts
 
 	// you can preview these type of files if $preview_text_files is true
 	'previewable_text_file_exts'              => array( 'txt', 'log', 'xml', 'html', 'css', 'htm', 'js' ),
@@ -280,11 +276,11 @@ $config = array(
 
 	// Preview with Google Documents
 	'googledoc_enabled'                       => true,
-	'googledoc_file_exts'                     => array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx' ),
+	'googledoc_file_exts'                     => array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf' ),
 
 	// Preview with Viewer.js
 	'viewerjs_enabled'                        => true,
-	'viewerjs_file_exts'                      => array( 'pdf', 'odt', 'odp', 'ods' ),
+	'viewerjs_file_exts'                      => array( 'odt', 'odp', 'ods' ),
 
 	// defines size limit for paste in MB / operation
 	// set 'FALSE' for no limit

@@ -633,9 +633,13 @@ var encodeURL, show_animation, hide_animation, apply, apply_none, apply_img, app
 
         $('body').on('keypress', function(e) {
             var c = String.fromCharCode(e.which);
-            if (c == "'" || c == '"' || c == "\\" || c == '/') {
-                return false;
-            }
+			var forbiddenChar = ["'", '"', "\\", '/', '+'];
+			if (forbiddenChar.indexOf(c) > -1){
+				return false;
+			}
+            // if (c == "'" || c == '"' || c == "\\" || c == '/' || c=='+') {
+                // return false;
+            // }
         });
 
         $('ul.grid li figcaption').on('click', 'a[data-toggle="lightbox"]', function() {
@@ -1714,7 +1718,7 @@ var encodeURL, show_animation, hide_animation, apply, apply_none, apply_img, app
             stri = stri.replace("'", '');
             stri = stri.replace("/", '');
             stri = stri.replace("\\", '');
-            stri = stri.replace(/<\/?[^>]+(>|$)/g, "");
+            stri = stri.replace(/[\<\/\?\[\^\>\]\+\(\>\|\$\)]/g, "_");
             return $.trim(stri);
         }
         return null;
