@@ -276,11 +276,11 @@ $config = array(
 
 	// Preview with Google Documents
 	'googledoc_enabled'                       => true,
-	'googledoc_file_exts'                     => array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf' ),
+	'googledoc_file_exts'                     => array( 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'),
 
 	// Preview with Viewer.js
 	'viewerjs_enabled'                        => true,
-	'viewerjs_file_exts'                      => array( 'odt', 'odp', 'ods' ),
+	'viewerjs_file_exts'                      => array('pdf', 'odt', 'odp', 'ods' ),
 
 	// defines size limit for paste in MB / operation
 	// set 'FALSE' for no limit

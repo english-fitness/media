@@ -544,14 +544,14 @@ if(isset($_GET['action']))
 				}
 				elseif ($preview_mode == 'viewerjs')
 				{
-					$ret = '<iframe id="viewer" src="./../resources/js/ViewerJS/#../../'.$_GET["file"].'" allowfullscreen="" webkitallowfullscreen="" class="viewer-iframe"></iframe>';
+					$ret = '<iframe id="viewer" src="./../resources/js/ViewerJS/index.html#../../'.$_GET["file"].'" allowfullscreen="" webkitallowfullscreen="" class="viewer-iframe"></iframe>';
 
 				}
 				elseif ($preview_mode == 'google')
 				{
 					$url_file = $base_url . $upload_dir . str_replace($current_path, '', $_GET["file"]);
 					$googledoc_url = urlencode($url_file);
-					$googledoc_html = "<iframe src=\"http://docs.google.com/viewer?url=" . $googledoc_url . "&embedded=true\" class=\"google-iframe\"></iframe>";
+					$googledoc_html = "<iframe src=\"https://docs.google.com/viewer?url=" . $googledoc_url . "&embedded=true\" class=\"google-iframe\"></iframe>";
 					$ret = '<div class="text-center"><strong>' . $info['basename'] . '</strong></div>' . $googledoc_html . '';
 				}
 			}
