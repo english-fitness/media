@@ -31,6 +31,10 @@ function onSubmenuItemHover(){
 
 $(function(){
 	$(".dropdown-menu > li > a.trigger").hover(onSubmenuHover, onSubmenuHoverOut);
+    $(".dropdown-menu > li > a.trigger").click(function(e){
+        e.preventDefault();
+        return false;
+    });
 	$(".sub-menu > li > a").hover(onSubmenuItemHover);
 	$(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
 		var root=$(this).closest('.dropdown');
