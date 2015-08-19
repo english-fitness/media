@@ -426,12 +426,22 @@ img{
     padding-left:270px;
 }
 .form-container{
+    position:relative;
     width:746px;
     height:477px;
     border:solid 1px black;
     background-color:#fff;
     border-radius:20px;
     box-shadow:5px 5px 5px #888;
+}
+.form-container > .close-button{
+    display:none;
+    position: absolute;
+    top: -18px;
+    right: -18px;
+}
+.close-button img{
+    width: 45px;
 }
 .main-form{
     width:397px;
@@ -573,8 +583,15 @@ a.ui-state-default{
     font-size: 14px !important;
     line-height: 1.6;
 }
+.cd-author{
+    margin-top:20px;
+}
 .cd-author-info{
-    max-width:300px;
+    max-width:275px;
+}
+.cd-author img {
+    width: 80px;
+    height: 80px;
 }
 
 .cd-testimonials-item > .cd-author > .cd-author-info{

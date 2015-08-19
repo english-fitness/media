@@ -81,7 +81,7 @@ function addTeacher(divId, teacher, id){
     
     var teacherList = teacherDiv.find('.teacher-list');
     
-    var avatar = '<img class="teacher-icon" src="/media/uploads/home/teachers/' + teacher.avatar + '"/>'
+    var avatar = '<img class="teacher-icon" src="' + teacher.avatar + '"/>'
     var frameWrapper = $('<div class="teacher-frame"></div>').append(avatar);
     var listItem = $('<li class="teacher-select" data-teacher="' + id + '"></li>').append(frameWrapper);
     
@@ -149,7 +149,7 @@ function createTestimonialItem(testimonial, cssClass){
     var content = '<p>' + testimonial.content + '</p>';
     
     var author = '<div class="cd-author"></div>';
-    var avatar = '<img src="/media/uploads/home/students/' + testimonial.avatar + '"/>';
+    var avatar = '<img src="./img/students/' + testimonial.avatar + '"/>';
     
     var authorInfo = '<div class="cd-author-info"></div>';
     var name = '<li>' + testimonial.name + '</li>';
@@ -255,9 +255,10 @@ $(function () {
 	});
 	modalForm.realize();
 	modalForm.getModalHeader().hide();
-	modalForm.getModalContent().css('background-color','rgba(255,255,255,0)');
-	modalForm.getModalContent().width(0);
-	modalForm.getModalContent().css('margin-top','60px');
+    var content = modalForm.getModalContent();
+	content.css('background-color','rgba(255,255,255,0)');
+	content.width(0);
+	content.css('margin-top','60px');
 	modalForm.getModalFooter().hide();
 	
 	//reset header to normal state
@@ -284,6 +285,13 @@ $(function () {
 		$('#body-header').width($(document).width());
 		
 		var formBody = modalForm.getModalBody();
+        
+        var closeBtn = formBody.find('.close-button');
+        closeBtn.show();
+        closeBtn.children('a').click(function(e){
+            e.preventDefault();
+            modalForm.close();
+        });
 		
 		//submit button for modal popup
 		formBody.find(".submit-btn").click(function(e){
