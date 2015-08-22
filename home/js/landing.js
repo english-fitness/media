@@ -69,10 +69,14 @@ function register(data){
 }
 
 function populateTeachers(divId, teachers){
-    var randomTeachers = randomSubArray(teachers, 4);
+    // var randomTeachers = randomSubArray(teachers, 4);
     
-    for (var i in randomTeachers){
-        addTeacher(divId, randomTeachers[i], i);
+    // for (var i in randomTeachers){
+        // addTeacher(divId, randomTeachers[i], i);
+    // }
+    
+    for (var i in teachers){
+        addTeacher(divId, teachers[i], i);
     }
 }
 
@@ -163,7 +167,6 @@ function createTestimonialItem(testimonial, cssClass){
 
 //teacher select
 function selectTeacher(teacher) {
-    console.log(teacher);
     blockSelect = true;
     $('.selected').removeClass('selected');
     var frame = $('.teacher-select[data-teacher=' + teacher + ']')
@@ -208,10 +211,14 @@ $(function () {
     $('.teleporter').click(function (e) {
         e.preventDefault();
         var waypoint = $('#' + $(this).data('waypoint'));
-        var position = waypoint.offset().top;
-        $('body,html').animate({ scrollTop: position }, 500);
+        jump(waypoint);
         return false;
     });
+    
+    function jump(destination){
+        var position = destination.offset().top;
+        $('body,html').animate({ scrollTop: position }, 500);
+    }
 
     //for displaying special form inputs
     $(".wday").weekLine({
@@ -283,7 +290,17 @@ $(function () {
 		showingModal = true;
 		//prevent header spreading to full width on modal show
 		$('#body-header').width($(document).width());
-		
+        
+        var triggerer = $(this);
+        if (triggerer.hasClass('slow-teleporter')){
+            modalForm.getModal().on('hidden.bs.modal', function(){
+                var waypoint = $('#' + triggerer.data('waypoint'));
+                jump(waypoint);
+            });
+        } else {
+            modalForm.getModal().unbind('hidden.bs.modal');
+        }
+
 		var formBody = modalForm.getModalBody();
         
         var closeBtn = formBody.find('.close-button');
@@ -292,7 +309,7 @@ $(function () {
             e.preventDefault();
             modalForm.close();
         });
-		
+        
 		//submit button for modal popup
 		formBody.find(".submit-btn").click(function(e){
 			e.preventDefault();
@@ -324,7 +341,7 @@ $(function () {
 		timeTo.timepickr({
 			convention: 24,
 		});
-		
+        
 		modalForm.open();
 	});
 	

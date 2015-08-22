@@ -7739,18 +7739,34 @@ $.extend(TimeGrid.prototype, {
 			segCols.push([]);
 		}
 		
+        //contains columns with occupied slots.
 		var occupiedSlots = [];
 
 		for (i = 0; i < segs.length; i++) {
+            //get current column
 			var col = segs[i].col;
+            
+            //set flag to add this segment to the calendar
 			var addFlag = true;
-			
+            
 			if (occupiedSlots[col]){
+                //get occupied slots in the current column
 				var slots = occupiedSlots[col];
+                //check if we would remove any slot or will we add the current segment to the calendar
 				for (x in slots){
-					if (segs[i].event.start.diff(slots[x].start) == 0){
+                    //check if there is time conflict
+                    var segStart = segs[i].event.start;
+                    var segEnd = segs[i].event.end;
+                    var slot = slots[x].segment;
+                    //overlapsing on other slot means time conflict
+                    if ((segStart >= slot.start && segStart <= slot.end) || (segEnd >= slot.start && segEnd <= slot.end)){
+                        var timeConflict = true;
+                    } else {
+                        var timeConflict = false;
+                    }
+                    //decide which segment to keep if there is a time conflict
+					if (timeConflict){
 						var reservedSlot = (segs[i].event.className.indexOf('reservedSlot') > -1);
-						
 						if (reservedSlot){
 							addFlag = false;
 							break;
@@ -9974,4 +9990,4 @@ $.extend(ResourceDayView.prototype, {
 
 ;;
 
-});
+});;

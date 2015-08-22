@@ -130,16 +130,16 @@ img{
     font-size:18px;
 }
 #banner-benefits > li:nth-child(1){
-    background-image:url("../img/benefit-confidence.png");
-}
-#banner-benefits > li:nth-child(2){
     background-image:url("../img/benefit-environment.png");
 }
-#banner-benefits > li:nth-child(3){
+#banner-benefits > li:nth-child(2){
     background-image:url("../img/benefit-helper.png");
 }
-#banner-benefits > li:nth-child(4){
+#banner-benefits > li:nth-child(3){
     background-image:url("../img/benefit-motivation.png");
+}
+#banner-benefits > li:nth-child(4){
+    background-image:url("../img/benefit-confidence.png");
 }
 #content-start{
     font-weight:bold;
@@ -164,6 +164,7 @@ img{
 }
 #introduction{
     height:557px;
+    padding-left:20px;
 }
 .body-content{
     height:667px;
@@ -378,7 +379,7 @@ img{
 #benefit-title{
     text-align:center;
     padding-top:20px;
-    margin-bottom:80px;
+    margin-bottom:50px;
 }
 #benefit-title .larger-title{
     font-size:115px;
@@ -386,7 +387,7 @@ img{
     line-height:115px;
 }
 #benefit-title .smaller-title{
-    width:750px;
+    width:800px;
     margin:0 auto;
     padding-top:1px;
     font-size:25px;
@@ -396,6 +397,7 @@ img{
     list-style-type:none;
     margin-left:10px;
     width:1100px;
+    margin-bottom:40px;
 }
 .benefits > li{
     width:144px;
@@ -416,13 +418,12 @@ img{
     width:250px;
     margin-left:-50px;
     margin-top:10px;
-    font-size:18px;
+    font-size:15px;
     text-align:center;
     font-weight:bold;
 }
 #registration{
-    margin-top:-60px;
-    padding-top:80px;
+    padding-top:40px;
     padding-left:270px;
 }
 .form-container{
@@ -538,7 +539,7 @@ img{
     padding-top:20px;
 }
 #testimonial-container{
-    padding-top:20px;
+    margin-top:-20px;
     padding-left:100px;
 }
 #testimonial-container ul{
@@ -595,10 +596,12 @@ a.ui-state-default{
 }
 
 .cd-testimonials-item > .cd-author > .cd-author-info{
-    max-width:283px;
+    max-width:253px;
 }
 
 .cd-testimonials-wrapper{
-    width:900px;
-    max-width:900px;
+    width:1000px;
+    max-width:1000px;
+    padding: 64px 50px 84px;
+    margin-bottom: 0;
 }

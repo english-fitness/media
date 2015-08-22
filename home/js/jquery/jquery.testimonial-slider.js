@@ -4,10 +4,10 @@ jQuery(document).ready(function($){
 		selector: ".cd-testimonials > li",
 		animation: "slide",
 		controlNav: false,
-		slideshow: false,
+		slideshow: true,
 		smoothHeight: false,
-        itemWidth: 210,
-        itemMargin: 5,
+        itemWidth: 447.5,
+        itemMargin: 0,
         minItems: 2,
         maxItems: 2,
 		start: function(){
