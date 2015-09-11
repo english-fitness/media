@@ -418,7 +418,7 @@ img{
     width:250px;
     margin-left:-50px;
     margin-top:10px;
-    font-size:15px;
+    font-size:16px;
     text-align:center;
     font-weight:bold;
 }
@@ -430,10 +430,10 @@ img{
     position:relative;
     width:746px;
     height:477px;
-    border:solid 1px black;
+    /* border:solid 1px black;
     background-color:#fff;
     border-radius:20px;
-    box-shadow:5px 5px 5px #888;
+    box-shadow:5px 5px 5px #888; */
 }
 .form-container > .close-button{
     display:none;
@@ -502,7 +502,7 @@ img{
     float:right;
     margin-top:18px;
     margin-right:18px;
-    background-color:#EBECED;
+    /* background-color:#EBECED; */
     border-radius:20px;
 }
 .inner-form > .optional-form label{
@@ -604,4 +604,18 @@ a.ui-state-default{
     max-width:1000px;
     padding: 64px 50px 84px;
     margin-bottom: 0;
+}
+
+.cd-testimonials-all{
+    background-color:rgba(255,255,255,0.9);
+}
+
+/*center main form*/
+.main-form{
+    margin-left:50px;
+}
+
+.form-container > .close-button{
+    top:-30px;
+    right:33%;
 }

@@ -55,7 +55,7 @@ function register(data){
 			data: data,
 			success: function (response) {
 				if (response.success) {
-					window.location.href = "/news/registrationSuccess"
+					window.location.href = "/news/afterRegistration?id=" + response.model.id;
 				} else {
 					alert("Thông tin đăng ký không hợp lệ. Bạn hãy kiểm tra lại thông tin đăng ký. Bạn cần nhập thông tin chính xác để chúng tôi có thể liên hệ với bạn");
 				}
@@ -263,6 +263,8 @@ $(function () {
 	modalForm.realize();
 	modalForm.getModalHeader().hide();
     var content = modalForm.getModalContent();
+    content.css('border', 'none');
+    content.css('box-shadow', 'none');
 	content.css('background-color','rgba(255,255,255,0)');
 	content.width(0);
 	content.css('margin-top','60px');
@@ -293,9 +295,10 @@ $(function () {
         
         var triggerer = $(this);
         if (triggerer.hasClass('slow-teleporter')){
+            var waypoint = $('#' + triggerer.data('waypoint'));
             modalForm.getModal().on('hidden.bs.modal', function(){
-                var waypoint = $('#' + triggerer.data('waypoint'));
                 jump(waypoint);
+                $(this).off();
             });
         } else {
             modalForm.getModal().unbind('hidden.bs.modal');
