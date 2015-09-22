@@ -50,7 +50,7 @@ $.fn.extend({
 
 
         window.craicAudioContext = (function(){
-            return  window.webkitAudioContext || window.AudioContext ;
+            return window.AudioContext ;
         })();
 
         navigator.getMedia = ( navigator.mozGetUserMedia ||

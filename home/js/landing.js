@@ -46,16 +46,38 @@ function validate(form) {
 //global var for requesting
 var requesting = false;
 
+function quickRegister(data){
+    if (!requesting) {
+		requesting = true;
+		$.ajax({
+			type: "POST",
+			url: "/register/contact",
+			data: data,
+			success: function (response) {
+				if (response.success) {
+					window.location.href = "/news/afterRegistration?id=" + response.model.id;
+				} else {
+					alert("Thông tin đăng ký không hợp lệ. Bạn hãy kiểm tra lại thông tin đăng ký. Bạn cần nhập thông tin chính xác để chúng tôi có thể liên hệ với bạn");
+				}
+				requesting = false;
+			},
+			error: function () {
+				requesting = false;
+			}
+		});
+	}
+}
+
 function register(data){
 	if (!requesting) {
 		requesting = true;
 		$.ajax({
 			type: "POST",
-			url: "https://speakup.vn/register/contact",
+			url: "/register/contact",
 			data: data,
 			success: function (response) {
 				if (response.success) {
-					window.location.href = "/news/afterRegistration?id=" + response.model.id;
+					window.location.href = "/news/registrationSuccess";
 				} else {
 					alert("Thông tin đăng ký không hợp lệ. Bạn hãy kiểm tra lại thông tin đăng ký. Bạn cần nhập thông tin chính xác để chúng tôi có thể liên hệ với bạn");
 				}
@@ -253,21 +275,24 @@ $(function () {
 	var modalForm = new BootstrapDialog({
 		autodestroy:true,
 		message: function(){
+            /* large form
 			var cloneForm = $('#main-form').clone().attr('id', 'clone-form');
+            */
+            var cloneForm = $('#popup-registration-form').clone().attr('id', 'clone-form');
 			cloneForm.find('.registration-form').attr('id', 'clone-registration-form');
 			cloneForm.find('.submit-btn').attr('data-form', 'clone-registration-form');
-			
 			return cloneForm;
 		},
 	});
 	modalForm.realize();
 	modalForm.getModalHeader().hide();
     var content = modalForm.getModalContent();
-    content.css('border', 'none');
-    content.css('box-shadow', 'none');
-	content.css('background-color','rgba(255,255,255,0)');
+    /* large form
+    content.css('border', 'none').css('box-shadow', 'none').css('background-color','rgba(255,255,255,0)').css('margin-top','120px');
+    */
+    //small form
+    content.css('border', 'none').css('box-shadow', 'none').css('background-color','rgba(255,255,255,0)');
 	content.width(0);
-	content.css('margin-top','60px');
 	modalForm.getModalFooter().hide();
 	
 	//reset header to normal state
@@ -320,11 +345,12 @@ $(function () {
 			var validator = window[button.data('validator')];
 			var form = $('#' + button.data('form'));
 			if (validator.call(this, form)) {
-				register(form.serialize());
+				quickRegister(form.serialize());
 			}
 			return false;
 		});
 		
+        //wday input for clone-form
 		formBody.find('.wday').html("");
 		formBody.find(".wday").weekLine({
 			theme: 'jquery-ui',
@@ -334,6 +360,7 @@ $(function () {
 			},
 		});
 		
+        //timepickr for clone-form
 		var timeFrom = formBody.find(".time_from");
 		timeFrom.next().remove();
 		timeFrom.timepickr({
@@ -345,7 +372,7 @@ $(function () {
 			convention: 24,
 		});
         
-		modalForm.open();
+        modalForm.open();
 	});
 	
 	$(window).bind('scroll', function(){
@@ -368,20 +395,9 @@ $(function () {
     });
 });
 
-//tawk api
-var $_Tawk_API = {}, $_Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/55a6150d84d307454c0158a3/default';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-})();
-
 var html5lightbox_options = {
     watermark: "Speak up - Học tiếng Anh online",
-    watermarklink: "https://speakup.vn/news",
+    watermarklink: "/news",
 };
 
 

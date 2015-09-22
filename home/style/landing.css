@@ -397,7 +397,6 @@ img{
     list-style-type:none;
     margin-left:10px;
     width:1100px;
-    margin-bottom:40px;
 }
 .benefits > li{
     width:144px;
@@ -423,17 +422,19 @@ img{
     font-weight:bold;
 }
 #registration{
-    padding-top:40px;
+    margin-top:-30px;
+    padding-top:80px;
     padding-left:270px;
 }
 .form-container{
     position:relative;
     width:746px;
     height:477px;
-    /* border:solid 1px black;
+    margin-top:-30px;
+    border:solid 1px black;
     background-color:#fff;
     border-radius:20px;
-    box-shadow:5px 5px 5px #888; */
+    box-shadow:5px 5px 5px #888;
 }
 .form-container > .close-button{
     display:none;
@@ -502,7 +503,7 @@ img{
     float:right;
     margin-top:18px;
     margin-right:18px;
-    /* background-color:#EBECED; */
+    background-color:#EBECED;
     border-radius:20px;
 }
 .inner-form > .optional-form label{
@@ -611,6 +612,8 @@ a.ui-state-default{
 }
 
 /*center main form*/
+/*back to old large form*/
+/*
 .main-form{
     margin-left:50px;
 }
@@ -618,4 +621,19 @@ a.ui-state-default{
 .form-container > .close-button{
     top:-30px;
     right:33%;
+}b
+*/
+
+#popup-registration-form{
+    display:none;
+    margin-left:35%;
+    margin-top:15%;
+}
+
+#inner-clone-form{
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top:30px;
+    margin-left:100px;
 }

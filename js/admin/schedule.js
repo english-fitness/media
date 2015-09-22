@@ -453,9 +453,3 @@ function displayConfirmDialog(title, confirmText, confirmButton){
         buttons:buttons,
     });
 }
-
-function reloadAll(){
-    for (var i = 0; i < teacherGroups.length; i++){
-        reloadCalendar('calendar-'+(i+1), teacherGroups[i], moment(currentWeekStart).add(currentWday, 'days').format("YYYY-MM-DD"));
-    }
-}
