@@ -314,9 +314,13 @@ $(function () {
 	//trigger form
 	$('.form-trigger').click(function(e){
 		e.preventDefault();
-		showingModal = true;
-		//prevent header spreading to full width on modal show
-		$('#body-header').width($(document).width());
+		popupForm();
+	});
+
+    function popupForm(){
+        showingModal = true;
+        //prevent header spreading to full width on modal show
+        $('#body-header').width($(document).width());
         
         var triggerer = $(this);
         if (triggerer.hasClass('slow-teleporter')){
@@ -329,7 +333,7 @@ $(function () {
             modalForm.getModal().unbind('hidden.bs.modal');
         }
 
-		var formBody = modalForm.getModalBody();
+        var formBody = modalForm.getModalBody();
         
         var closeBtn = formBody.find('.close-button');
         closeBtn.show();
@@ -338,42 +342,42 @@ $(function () {
             modalForm.close();
         });
         
-		//submit button for modal popup
-		formBody.find(".submit-btn").click(function(e){
-			e.preventDefault();
-			var button = $(this);
-			var validator = window[button.data('validator')];
-			var form = $('#' + button.data('form'));
-			if (validator.call(this, form)) {
-				quickRegister(form.serialize());
-			}
-			return false;
-		});
-		
+        //submit button for modal popup
+        formBody.find(".submit-btn").click(function(e){
+            e.preventDefault();
+            var button = $(this);
+            var validator = window[button.data('validator')];
+            var form = $('#' + button.data('form'));
+            if (validator.call(this, form)) {
+                quickRegister(form.serialize());
+            }
+            return false;
+        });
+        
         //wday input for clone-form
-		formBody.find('.wday').html("");
-		formBody.find(".wday").weekLine({
-			theme: 'jquery-ui',
-			dayLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
-			onChange: function () {
-				$(this).next().val($(this).weekLine('getSelected', 'indexes'));
-			},
-		});
-		
+        formBody.find('.wday').html("");
+        formBody.find(".wday").weekLine({
+            theme: 'jquery-ui',
+            dayLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+            onChange: function () {
+                $(this).next().val($(this).weekLine('getSelected', 'indexes'));
+            },
+        });
+        
         //timepickr for clone-form
-		var timeFrom = formBody.find(".time_from");
-		timeFrom.next().remove();
-		timeFrom.timepickr({
-			convention: 24,
-		});
-		var timeTo = formBody.find(".time_to");
-		timeTo.next().remove();
-		timeTo.timepickr({
-			convention: 24,
-		});
+        var timeFrom = formBody.find(".time_from");
+        timeFrom.next().remove();
+        timeFrom.timepickr({
+            convention: 24,
+        });
+        var timeTo = formBody.find(".time_to");
+        timeTo.next().remove();
+        timeTo.timepickr({
+            convention: 24,
+        });
         
         modalForm.open();
-	});
+    }
 	
 	$(window).bind('scroll', function(){
 		onScroll();
@@ -393,6 +397,8 @@ $(function () {
             selectTeacher($(this).data('teacher'));
         }
     });
+
+    popupForm();
 });
 
 var html5lightbox_options = {
