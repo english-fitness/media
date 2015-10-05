@@ -19,7 +19,7 @@ img{
 	z-index:999;
 }
 #main-banner{
-    background:url("../img/banner.png") no-repeat top center;
+    background:url("../img/landing-1/banner.png") no-repeat top center;
     height:667px;
     color: #245ba7;
 }
@@ -130,16 +130,16 @@ img{
     font-size:18px;
 }
 #banner-benefits > li:nth-child(1){
-    background-image:url("../img/benefit-environment.png");
+    background-image:url("../img/landing-1/benefit-environment.png");
 }
 #banner-benefits > li:nth-child(2){
-    background-image:url("../img/benefit-helper.png");
+    background-image:url("../img/landing-1/benefit-helper.png");
 }
 #banner-benefits > li:nth-child(3){
-    background-image:url("../img/benefit-motivation.png");
+    background-image:url("../img/landing-1/benefit-motivation.png");
 }
 #banner-benefits > li:nth-child(4){
-    background-image:url("../img/benefit-confidence.png");
+    background-image:url("../img/landing-1/benefit-confidence.png");
 }
 #content-start{
     font-weight:bold;
@@ -160,7 +160,7 @@ img{
 #content{
     width:1000px;
     margin:0 auto;
-    background:url("../img/blue-ln.png") repeat-y 0px 0px;
+    background:url("../img/landing-1/blue-ln.png") repeat-y 0px 0px;
 }
 #introduction{
     height:557px;
@@ -337,16 +337,16 @@ img{
 .piece.twoside{
     margin-left:5px;
     margin-right:5px;
-    background:url("../img/piece-middle.png") no-repeat;
+    background:url("../img/landing-1/piece-middle.png") no-repeat;
 }
 .piece.leftside{
     margin-left:5px;
-    background:url("../img/piece-right.png") no-repeat;
+    background:url("../img/landing-1/piece-right.png") no-repeat;
 }
 .step-number{
     width:100px;
     height:100%;
-    background:url("../img/number-slot.png") no-repeat center;
+    background:url("../img/landing-1/number-slot.png") no-repeat center;
     margin-left:-55px;
     float:left;
     font-size:65px;
@@ -401,7 +401,7 @@ img{
 .benefits > li{
     width:144px;
     height:180px;
-    background:url("../img/benefit-bg.png") no-repeat center top;
+    background:url("../img/landing-1/benefit-bg.png") no-repeat center top;
     margin-right:120px;
     float:left;
 }
