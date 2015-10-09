@@ -447,7 +447,7 @@ img{
 #registration{
     margin-top:-30px;
     padding-top:80px;
-    padding-left:230px;
+    padding-left:255px;
     position: relative;
 }
 .form-container{
@@ -566,6 +566,7 @@ img{
 /*testimonial*/
 #testimonials{
     height:700px;
+    padding-left: 15p;
 }
 .testimonial-title{
     padding-top:20px;
@@ -573,6 +574,7 @@ img{
 }
 #testimonial-container{
     margin-top:-20px;
+    margin-left: 30px;
 }
 #testimonial-container ul{
     padding-left:0px;
