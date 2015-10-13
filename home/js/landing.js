@@ -398,7 +398,6 @@ $(function () {
         }
     });
 
-    popupForm();
 });
 
 var html5lightbox_options = {
