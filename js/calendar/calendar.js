@@ -4,6 +4,18 @@ var startTime = ['09:00', '09:40' ,'10:20','11:00', '11:40', '12:20', '13:00', '
 var endTime = ['09:30', '10:10', '10:50','11:30', '12:10', '12:50', '13:30', '14:10', '14:50', '15:30', '16:10', '16:50',
 				'17:30', '18:10', '18:50', '19:30', '20:10', '20:50', '21:30', '22:10', '22:50'];
 
+var momentStartTime = [];
+var momentEndTime = [];
+
+var today = moment().format("YYYY-MM-DD");
+
+for (var i in startTime){
+	momentStartTime.push(moment(today + " " + startTime[i]));
+}
+for (var i in endTime){
+	momentEndTime.push(moment(today + " " + endTime[i]));
+}
+
 function parseTimeslot(slotNumber){
 	var dayIndex = Math.floor(slotNumber/21);
 	var slotIndex = slotNumber - dayIndex*21;
@@ -14,6 +26,28 @@ function parseTimeslot(slotNumber){
 	};
 	
 	return timeslot;
+}
+
+//day start with 0
+function getTimeslot(day, time){
+	timeslot = startTime.indexOf(time);
+	if (timeslot > -1){
+		return day*21 + timeslot;
+	} else {
+		var slot = moment(today + " " + time);
+		for (var i = 0; i < momentStartTime.length - 1; i++){
+			if (slot.isBetween(momentStartTime[i], momentStartTime[i+1])){
+				return day*21 + i;
+			}
+		}
+	}
+
+	return -1;
+}
+
+function getTimeslotText(slotNumber, week){
+	var slotInfo = parseTimeslot(slotNumber);
+	return moment().day(slotInfo.day + 1).week(week).format("dddd, DD-MM-YYYY") + "<br>" + startTime[slotInfo.time] + "-" + endTime[slotInfo.time];
 }
 
 function getAvailableTimeslot(availableSlots, timezone){
