@@ -3,6 +3,7 @@
     margin:0 auto;
     background-color:#E7E8E9;
     font-family: 'Roboto', sans-serif;
+    padding-bottom: 150px;
 }
 a:focus{
     outline:0;
@@ -270,7 +271,7 @@ img{
 }
 .teacher-right{
     width:779px;
-    height:454px;
+    min-height:454px;
     float:left;
     background-color:#fff;
     border-radius:8px;

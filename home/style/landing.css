@@ -210,7 +210,7 @@ img{
 }
 .teacher-right{
     width:779px;
-    height:454px;
+    min-height:454px;
     float:left;
     background-color:#fff;
     border-radius:8px;
