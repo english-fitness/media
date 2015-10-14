@@ -773,7 +773,7 @@ function is_function_callable($name)
 	return ! in_array($name, $disabled);
 }
 
-function isInLibrary($link, $current_path){
+function isInLibrary($link, $current_path=""){
 	//if current path is also a link, skip it
 	if (is_link($link)){
 		return true;

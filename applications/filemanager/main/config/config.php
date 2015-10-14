@@ -6,7 +6,7 @@ if($userId==null){
 }
 $isAdmin = isset($_SESSION['checkAccessUploadUsers'])? $_SESSION['checkAccessUploadUsers']: false;
 if ($isAdmin){
-	$upload_dir = '/media/uploads/users';
+	$upload_dir = '/media/uploads/users/';
 	$current_path = '../../../uploads/users/';
 	if (isset($_GET['user_id'])){
 		$_SESSION["RF"]["subfolder"] = $_GET['user_id'] . '/';
