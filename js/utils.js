@@ -12,12 +12,21 @@ var SearchBox = {
             }
         });
     },
-    autocomplete: function(datasource){
+    search: function(searchBox, searchFunction, searchCallback){
+        //lazy mode ._.
+        if (!(searchBox instanceof jQuery)){
+            searchBox = $(searchBox);
+        }
+        var keyword = searchBox.val();
+        searchFunction.call(undefined, keyword, searchCallback);
+    },
+    autocomplete: function(datasource, search){
         /*
         datasource:
         - searchBox
         - results
-        - resultDisplay
+        - resultValue
+        - resultLabel
         - itemIdProperty
         - selectCallback
         */
@@ -30,24 +39,28 @@ var SearchBox = {
             itemIdProperty = 'id';
         }
         var autocompleteDatasource = {
-            source: formatSearchResult(datasource.results, itemIdProperty, datasource.resultDisplay),
+            source: formatSearchResult(datasource.results, itemIdProperty, datasource.resultValue, datasource.resultLabel),
             height:'50',
         }
         if (datasource.selectCallback){
             autocompleteDatasource.select = function(e, ui){
-                datasource.selectCallback.call(undefined, ui.item.id);
+                datasource.selectCallback.call(undefined, ui.item.id, ui.item.value, ui.item.label);
             };
         }
         $(searchBox).autocomplete(autocompleteDatasource);
+        if (search){
+            $(searchBox).autocomplete('search');
+        }
     },
 }
 
-function formatSearchResult(results, idProperty, displayData){
+function formatSearchResult(results, idProperty, resultValue, resultLabel){
 	var formattedData = [];
 	results.forEach(function(value,key){
 		formattedData[formattedData.length] = {
             'id': value[idProperty],
-			'value': value[displayData], //should be able to use more flexible expression
+			'label': value[resultLabel], //should be able to use more flexible expression
+            'value': value[resultValue],
 		}
 	});
 	return formattedData;
