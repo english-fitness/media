@@ -78,7 +78,7 @@ var AjaxCall = {
                 role:"role_student",
             },
             success: function(response) {
-                if (callback != undefined && callback != null){
+                if (callback && typeof callback === 'function'){
                     callback(response.results);
                 }
             },
@@ -96,7 +96,7 @@ var AjaxCall = {
                 role:"role_teacher",
             },
 			success:function(response){
-                if (callback != undefined && callback != null){
+                if (callback && typeof callback === 'function'){
                     callback(response.results);
                 }
 			},
@@ -113,7 +113,7 @@ var AjaxCall = {
                 keyword:keyword,
             },
 			success:function(response){
-                if (callback != undefined && callback != null){
+                if (callback && typeof callback === 'function'){
                     callback(response.results);
                 }
 			},
