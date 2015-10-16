@@ -54,7 +54,7 @@ function checkCourseValidate(){
 	totalSession = $("#numberOfSession").val();
 	start_date = $("#startDate").val();
 	checkvalid = true;
-	if(subject_id=="" || wnumber=="" || start_date=="" || totalSession<0 || totalSession>200){
+	if(wnumber=="" || start_date=="" || totalSession<0 || totalSession>200){
 		checkvalid = false;
 	}else{
 		if(!(start_date>=currentDate && start_date<="2100-01-01")){
@@ -73,9 +73,8 @@ $(document).ready(function() {
 		var check_valid = checkCourseValidate();
 		if(check_valid){
 			$("#validMessage").html("<span style='color:blue'>Đang tạo khóa học. Vui lòng chờ...</span>");
-			$("#course-form").submit();
-		}else{
-			$("#validMessage").html('<span class="required">Vui lòng kiểm tra lại những trường dữ liệu bắt buộc(*)!</span>');
 		}
+		$("#course-form").submit();
 	});
+	$('#tutorClasses').change();
 });
