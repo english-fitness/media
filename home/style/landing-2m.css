@@ -1,0 +1,445 @@
+.main-page{
+	width: 720px;
+	text-align: center;
+	background-color:#E7E8E9;
+	color:#044C95;
+    overflow: hidden;
+}
+/* General classes */
+ol{
+    list-style-type:none !important;
+    margin-bottom:0 !important;
+}
+ul{
+    list-style-type:none !important;
+}
+.layer-2{
+	position: relative;
+	z-index: 2 !important;
+}
+.bg{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.fb-like {
+    transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+}
+
+.waypoint{
+    position: absolute;
+}
+.accent{
+    color:#044C95;
+}
+.accent-bg{
+    background-color:#06538A;
+    color:white;
+}
+.frame{
+    padding: 10px 20px 10px 20px;
+    border-radius:25px;
+}
+.orange-darker{
+    color:#FF4200;
+}
+.orange-btn{
+    background: #F47621 repeat scroll 0 0;
+    color: #f8f8f9;
+}
+.orange-btn:hover{
+    text-decoration:none;
+    background:#FF8820 repeat scroll 0 0;
+    color:#fff;
+}
+.orange-btn:active{
+    outline:0;
+    text-decoration:none;
+    color:#fff;
+}
+.orange-btn:focus{
+    outline:0;
+    text-decoration:none;
+    color:#fff;
+}
+.orange-btn:link{
+    outline:0;
+    text-decoration:none;
+    color:#fff;
+}
+.orange-btn:visited{
+    outline:0;
+    text-decoration:none;
+    color:#fff;
+}
+.orange-btn.sm{
+    padding: 7px 7px;
+    border-radius: 5px;
+}
+.orange-btn.large{
+    font-weight:bold;
+    font-size:45px;
+    padding: 20px 20px;
+    border-radius: 13px;
+}
+.orange-btn.med{
+    font-weight:bold;
+    font-size:35px;
+    padding: 20px 20px;
+    border-radius: 13px;
+}
+.button-section{
+    height: 250px;
+    line-height: 200px;
+    vertical-align: middle;
+}
+
+/* header */
+#header-bg{
+	background:url(/media/home/img/landing-2/bg-m.png) no-repeat;
+	height:2392px;
+}
+.su-logo{
+	width: 100%;
+	border-bottom: 3px solid #245ba7
+}
+.header-nav-bar{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+	line-height: 38px;
+}
+.header-nav-bar:after{
+	clear:both;
+}
+.header-nav{
+	width: 33.33%;
+	float: left;
+}
+.quick-nav-link{
+	font-weight:bold;
+	font-size: 25px;
+	margin-left: 10px;
+}
+
+/* introduction */
+.banner-title{
+    font-size:45px;
+    padding-top:15px;
+    line-height: 65px;
+    text-align: center;
+    margin: 0 auto 60px;
+}
+.title-offer-tag{
+    font-size: 30px;
+    background-color: #5196BA;
+    color: white;
+    padding: 15px;
+}
+.banner-subtitle{
+    text-align:center;
+    padding-top:80px;
+    margin:80px auto 50px;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+/* benefits */
+#benefit{
+    position: relative;
+    margin-top:200px;
+}
+#benefit-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+#benefit-title .larger-title{
+    font-size:95px;
+    font-weight:bold;
+    line-height:115px;
+}
+#benefit-title .smaller-title{
+    width: 650px;
+    margin: 0 auto;
+    padding-top: 1px;
+    font-size: 25px;
+    color: #fff;
+}
+#benefit-container{
+    margin-top:100px;
+}
+.benefit-col{
+    width:50%;
+    height:320px;
+    float: left;
+    text-align: center;
+}
+.benefit-col img{
+    width:182px;
+    height:156px;
+}
+.benefit-txt{
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 30px;
+}
+/* registration-step */
+#registration-step{
+    margin-top: 150px;
+}
+#registration-intro{
+    background-color: white;
+    font-size: 46px;
+    font-weight: bold;
+    height: 150px;
+    padding: 20px 10px 20px 10px;
+}
+#registration-container{
+}
+.registration-step{
+    height:700px;
+    padding-top: 100px;
+}
+.registration-step img{
+    height:300px;
+}
+.step-txt-title{
+    font-size: 38px;
+    font-weight: 500;
+}
+.step-txt-content{
+    width: 500px;
+    margin: 30px auto;
+    border: dashed 4px white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left;
+    font-size: 30px
+}
+.step-note{
+    font-size: 25px;
+    margin-top: 40px;
+    padding: 20px;
+}
+/* teacher */
+#teacher{
+    height: 1415px;
+}
+#teacher-bg{
+    background:url(/media/home/img/landing-2/bg2-m.png) no-repeat;
+    height: 1415px;
+}
+#teacher-title{
+    padding-top: 120px;
+    font-size: 40px;
+    font-weight: 600;
+}
+#teacher-slider{
+    margin-top: 80px;
+    height: 225px;
+}
+#teacher-slider .slide{
+    height: 100%;
+    width: 15%;
+}
+#teacher-slider .slide.left{
+    float: left;
+    background:url(/media/home/img/landing-2/arrow-left.png) right center no-repeat;
+}
+#teacher-slider .slide.right{
+    float: left;
+    background:url(/media/home/img/landing-2/arrow-right.png) left center no-repeat;
+}
+#portrait-holder{
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+.portrait{
+    display: none;
+    margin: 0 auto;
+    width: 225px;
+    height: 225px;
+    background-color: white;
+    border-radius: 15px;
+    vertical-align: middle;
+    line-height: 225px;
+}
+.teacher-portrait{
+    height: 185px;
+    border-radius: 100px;
+    border: 3px solid #064A8E;
+    padding: 4px 4px;
+}
+.teacher-profile{
+    margin-top: 70px;
+    font-size: 30px;
+    text-align: left;
+}
+.info{
+    padding-left:80px;
+    padding-right: 35px;
+    margin-top:10px;
+    min-height:20px;
+}
+.info.name{
+    background:url("../img/info-1.png") no-repeat 35px center;
+}
+.info.location{
+    background:url("../img/info-2.png") no-repeat 35px center;
+}
+.info.style{
+    background:url("../img/info-3.png") no-repeat 35px center;
+}
+.info.achievement{
+    background:url("../img/info-4.png") no-repeat 35px center;
+}
+.teacher-video{
+    margin-top:50px;
+    width:100%;
+    height:266px;
+    text-align:center;
+}
+.teacher-video a{
+    display:block;
+    width:100%;
+    height:100%;
+}
+.vid-thumbnail{
+    position:relative;
+    width:650px;
+    height:360px;
+    margin: 0 auto;
+}
+.vid-thumbnail img{
+    max-width:650px;
+    max-height:360px;
+}
+.vid-thumbnail:after{
+    content: '';
+    position:absolute;
+    top:0;
+    left:0;
+    width:650px;
+    height:360px;
+    background: url(../img/lightbox-video-play.png) no-repeat center;
+    background-color:rgba(120,120,120,0.5);
+    border: 5px solid white;
+    /*Mozilla*/
+    -moz-transition: all 0.2s ease-in;
+    /* WebKit */
+    -webkit-transition: all 0.2s ease-in;
+    /* Opera */
+    -o-transition: all 0.2s ease-in;
+    /* Standard */
+    transition: all 0.2s ease-in;
+}
+.vid-thumbnail:hover:after{
+    background-color:rgba(220,220,220,0.5);
+}
+/* tuition */
+#tuition{
+    height: 1418px;
+}
+#tuition-bg{
+    background:url(/media/home/img/landing-2/bg3-m.png) no-repeat;
+    height: 1418px;
+}
+#tuition-title{
+    font-size: 65px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.tuition-tbl{
+    margin:0 auto 50px;
+    width:500px;
+    height:200px;
+    text-align:center;
+    font-size: 35px;
+    font-weight:bold;
+    border: solid 2px;
+}
+.tuition-tbl th{
+    background-color:rgba(8, 84, 159, 0.8);
+    border:solid 1px rgba(8, 84, 159, 0.8);
+    text-align:center;
+    color:#fff;
+}
+.tuition-tbl td{
+    border: solid 2px;
+}
+/* registration form */
+#registration{
+    margin-top: -300px;
+    padding: 50px 55px 100px 55px;
+    text-align: left;
+}
+#reg-wp{
+    top: 0;
+}
+#registration-form{
+    font-size: 35px;
+}
+#registration-form .form-group{
+    vertical-align: middle;    
+}
+#registration-form input{
+    height: 60px;
+    font-size: 35px;
+    margin-bottom: 30px;
+    border-radius: 9px;
+}
+.invalid-notice{
+    font-size: 27px;
+    font-weight: lighter;
+    color: gold;
+    font-style: italic;
+}
+
+/* testimonials */
+#testimonials{
+    position: relative;
+}
+#testimonials-content{
+    /*margin-top: -300px;*/
+}
+#testimonials-bg{
+    background:url(/media/home/img/landing-2/bg4-m.png) no-repeat;
+    height: 438px;
+    /*top:300px;*/
+}
+.testimonials-title{
+    padding-top:20px;
+    font-size: 50px;
+    font-weight: 600;
+}
+.testimonials-title .wing{
+    margin-top: -10px;
+}
+#testimonial-container{
+    margin-top: 80px;
+    font-size: 25px;
+}
+#testimonial-container ul{
+    padding-left:0px;
+}
+.cd-testimonials-all{
+    background-color:rgba(255,255,255,0.9);
+}
+.cd-author{
+    max-width: 550px;
+    margin: 0 auto;
+}
+.cd-author-info{
+    max-width: 450px;
+}
+.cd-author .cd-author-info li:first-child{
+    font-size: 20px;
+}
+.cd-author .cd-author-info li:last-child {
+    font-size: 18px;
+}

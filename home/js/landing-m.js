@@ -1,4 +1,4 @@
-﻿//form validate
+//form validate
 function validate(form) {
 	if (typeof form == "string"){
 		form = $('#'+form);
@@ -68,28 +68,6 @@ function quickRegister(data){
 	}
 }
 
-function register(data){
-	if (!requesting) {
-		requesting = true;
-		$.ajax({
-			type: "POST",
-			url: "/register/contact",
-			data: data,
-			success: function (response) {
-				if (response.success) {
-					window.location.href = "/news/registrationSuccess";
-				} else {
-					alert("Thông tin đăng ký không hợp lệ. Bạn hãy kiểm tra lại thông tin đăng ký. Bạn cần nhập thông tin chính xác để chúng tôi có thể liên hệ với bạn");
-				}
-				requesting = false;
-			},
-			error: function () {
-				requesting = false;
-			}
-		});
-	}
-}
-
 function populateTeachers(divId, teachers){
     // var randomTeachers = randomSubArray(teachers, 4);
     
@@ -105,35 +83,34 @@ function populateTeachers(divId, teachers){
 function addTeacher(divId, teacher, id){
     var teacherDiv = $('#'+divId);
     
-    var teacherList = teacherDiv.find('.teacher-list');
+    var portraitHolder = teacherDiv.find('#portrait-holder');
     
-    var avatar = '<img class="teacher-icon" src="/media/uploads/home/teachers/' + teacher.avatar + '"/>'
-    var frameWrapper = $('<div class="teacher-frame"></div>').append(avatar);
-    var listItem = $('<li class="teacher-select" data-teacher="' + id + '"></li>').append(frameWrapper);
+    var avatar = '<img class="teacher-portrait" src="/media/uploads/home/teachers/' + teacher.avatar + '"/>'
+    var portrait = $('<div class="portrait" data-teacher="'+id+'"></div>').append(avatar);
     
-    teacherList.append(listItem);
+    portraitHolder.append(portrait);
     
-    var teacherContainer = teacherDiv.find('.teachers-container');
+    var teacherContainer = teacherDiv.find('#teacher-container');
     
-    var teacherDetail = $('<div class="teacher-detail" data-teacher="' + id + '"></div>');
-    
-    var thumbnailImg = '<img src="' + teacher.videoThumbnail + '"/>';
-    var thumbnail = $('<div class="vid-thumbnail"></div>').append(thumbnailImg);
-    var lightbox = $('<a href="' + teacher.video + '" class="html5lightbox"></a>').append(thumbnail);
-    var teacherVideo = $('<div class="teacher-video"></div>').append(lightbox);
-    
-    var teacherInfo = $('<div class="teacher-info accent"></div>');
+    var teacherProfile = $('<div class="teacher-profile" data-teacher="' + id + '"></div>');
+
+    var teacherInfo = $('<div class="teacher-info"></div>');
     
     var name = '<div class="info name"><p><b>Giáo viên: </b>' + teacher.name + '</p></div>';
     var location = '<div class="info location"><p><b>Nơi ở: </b>' + teacher.location + '</p></div>';
     var education = '<div class="info style"><p><b>Học vấn: </b>' + teacher.education + '</p></div>';
     var achievements = '<div class="info achievement"><p><b>Thành tích: </b>' + teacher.achievements + '</p></div>';
-    
+
     teacherInfo.append(name).append(location).append(education).append(achievements);
+
+    var thumbnailImg = '<img src="' + teacher.videoThumbnail + '"/>';
+    var thumbnail = $('<div class="vid-thumbnail"></div>').append(thumbnailImg);
+    var lightbox = $('<a href="' + teacher.video + '" class="html5lightbox"></a>').append(thumbnail);
+    var teacherVideo = $('<div class="teacher-video"></div>').append(lightbox);
     
-    teacherDetail.append(teacherVideo).append(teacherInfo);
+    teacherProfile.append(teacherInfo).append(teacherVideo);
     
-    teacherContainer.append(teacherDetail);
+    teacherContainer.append(teacherProfile);
 }
 
 function populateTestimonials(divId, testimonials){
@@ -188,47 +165,54 @@ function createTestimonialItem(testimonial, cssClass){
 }
 
 //teacher select
-function selectTeacher(teacher) {
+function selectTeacher(teacher, direction) {
     blockSelect = true;
-    $('.selected').removeClass('selected');
-    var frame = $('.teacher-select[data-teacher=' + teacher + ']')
-    frame.addClass('selected');
-    var teacher = frame.data('teacher');
-    $('.teacher-detail').fadeOut(200);
+    var selected = $('.selected');
+    if (direction == 'left'){
+        var slideIn = 'right';
+        var slideOut = 'left'
+    } else {
+        var slideIn = 'left';
+        var slideOut = 'right'
+    }
+    if (selected.length > 0){
+        $('.selected').removeClass('selected').hide('slide', {direction:slideOut}, 350).promise().done(function(){
+            $('.portrait[data-teacher=' + teacher + ']').addClass('selected').show('slide', {direction:slideIn}, 450);
+        });
+    } else {
+        $('.portrait[data-teacher=' + teacher + ']').addClass('selected').show('slide', {direction:slideIn}, 450);
+    }
+    $('.teacher-profile').fadeOut(350);
     setTimeout(function () {
-        $('.teacher-detail[data-teacher=' + teacher + ']').fadeIn(300);
+        $('.teacher-profile[data-teacher=' + teacher + ']').fadeIn(450);
         blockSelect = false;
-    }, 300);
+    }, 450);
+}
+
+function slideTeacher(direction){
+    var portraitHolder = $('#portrait-holder');
+    var currentTeacher = portraitHolder.find(".selected");
+    if (direction == 'left'){
+        if (currentTeacher.is(':first-child')){
+            var nextTeacher = currentTeacher.parent().children().last().data('teacher');
+        } else {
+            var nextTeacher = currentTeacher.prev().data('teacher');
+        }
+    } else if (direction == 'right'){
+        if (currentTeacher.is(':last-child')){
+            var nextTeacher = currentTeacher.parent().children().first().data('teacher');
+        } else {
+            var nextTeacher = currentTeacher.next().data('teacher');
+        }
+    }
+    selectTeacher(nextTeacher, direction);
 }
 
 //global var for blocking select teacher
 var blockSelect = false;
 
+//Ready, set, go
 $(function () {
-	var bannerHeight = $('#main-banner').height();
-	var contentStartHeight = $('#content-start').height();
-	var contentStartPos = bannerHeight + contentStartHeight;
-	var showingLogo = false;
-	var floatingLogo = $('#floating-logo');
-	function onScroll(){
-		var currentPos = window.pageYOffset;
-		if (currentPos < contentStartPos){
-			floatingLogo.css('margin-top', '40px');
-			floatingLogo.css('top', contentStartPos - currentPos);
-		} else {
-			floatingLogo.css('top', 0);
-			floatingLogo.css('margin-top', '10px');
-		}
-		if (currentPos < bannerHeight){
-			showingLogo = false;
-			floatingLogo.fadeOut(300);;
-		} else if(!showingLogo){
-			showingLogo = true;
-			floatingLogo.fadeIn(500);
-		}
-	}
-	onScroll();
-
     //page navigator
     $('.teleporter').click(function (e) {
         e.preventDefault();
@@ -242,22 +226,6 @@ $(function () {
         $('body,html').animate({ scrollTop: position }, 500);
     }
 
-    //for displaying special form inputs
-    $(".wday").weekLine({
-        theme: 'jquery-ui',
-        dayLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
-        onChange: function () {
-            $(this).next().val($(this).weekLine('getSelected', 'indexes'));
-        },
-    });
-
-    $(".time_from").timepickr({
-        convention: 24,
-    });
-    $(".time_to").timepickr({
-        convention: 24,
-    });
-	
 	//submit form
     $(".submit-btn").click(function (e) {
         e.preventDefault();
@@ -265,51 +233,10 @@ $(function () {
         var validator = window[button.data('validator')];
         var form = $('#' + button.data('form'));
         if (validator.call(this, form)) {
-			register(form.serialize());
+			quickRegister(form.serialize());
         }
         return false;
     });
-	
-	//modal popup
-	var showingModal = false;
-	var modalForm = new BootstrapDialog({
-		autodestroy:true,
-		message: function(){
-            /* large form
-			var cloneForm = $('#main-form').clone().attr('id', 'clone-form');
-            */
-            var cloneForm = $('#popup-registration-form').clone().attr('id', 'clone-form');
-			cloneForm.find('.registration-form').attr('id', 'clone-registration-form');
-			cloneForm.find('.submit-btn').attr('data-form', 'clone-registration-form');
-			return cloneForm;
-		},
-	});
-	modalForm.realize();
-	modalForm.getModalHeader().hide();
-    var content = modalForm.getModalContent();
-    /* large form
-    content.css('border', 'none').css('box-shadow', 'none').css('background-color','rgba(255,255,255,0)').css('margin-top','120px');
-    */
-    //small form
-    content.css('border', 'none').css('box-shadow', 'none').css('background-color','rgba(255,255,255,0)');
-	content.width(0);
-	modalForm.getModalFooter().hide();
-	
-	//reset header to normal state
-	$(document).on('hidden.bs.modal', function () {
-		showingModal = false;
-		$('#body-header').css('width', '100%');
-	});
-	
-	//always adapt to screen width
-	//prevent it from stretching when modal is shown
-	window.onresize = function(){
-		if (showingModal){
-			$('#body-header').width($(document).width());
-		} else {
-			$('#body-header').css('width', '100%');
-		}
-	}
 	
 	//trigger form
 	$('.form-trigger').click(function(e){
@@ -317,86 +244,41 @@ $(function () {
 		popupForm();
 	});
 
-    function popupForm(){
-        showingModal = true;
-        //prevent header spreading to full width on modal show
-        $('#body-header').width($(document).width());
-        
-        var triggerer = $(this);
-        if (triggerer.hasClass('slow-teleporter')){
-            var waypoint = $('#' + triggerer.data('waypoint'));
-            modalForm.getModal().on('hidden.bs.modal', function(){
-                jump(waypoint);
-                $(this).off();
-            });
-        } else {
-            modalForm.getModal().unbind('hidden.bs.modal');
-        }
-
-        var formBody = modalForm.getModalBody();
-        
-        var closeBtn = formBody.find('.close-button');
-        closeBtn.show();
-        closeBtn.children('a').click(function(e){
-            e.preventDefault();
-            modalForm.close();
-        });
-        
-        //submit button for modal popup
-        formBody.find(".submit-btn").click(function(e){
-            e.preventDefault();
-            var button = $(this);
-            var validator = window[button.data('validator')];
-            var form = $('#' + button.data('form'));
-            if (validator.call(this, form)) {
-                quickRegister(form.serialize());
-            }
-            return false;
-        });
-        
-        //wday input for clone-form
-        formBody.find('.wday').html("");
-        formBody.find(".wday").weekLine({
-            theme: 'jquery-ui',
-            dayLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
-            onChange: function () {
-                $(this).next().val($(this).weekLine('getSelected', 'indexes'));
-            },
-        });
-        
-        //timepickr for clone-form
-        var timeFrom = formBody.find(".time_from");
-        timeFrom.next().remove();
-        timeFrom.timepickr({
-            convention: 24,
-        });
-        var timeTo = formBody.find(".time_to");
-        timeTo.next().remove();
-        timeTo.timepickr({
-            convention: 24,
-        });
-        
-        modalForm.open();
-    }
-	
-	$(window).bind('scroll', function(){
-		onScroll();
-	});
-    
     //populate data
     populateTeachers('teacher', teachers);
     populateTestimonials('testimonial-container', testimonials);
+    
+    //select first teacher when enter page
+    var firstFrame = $('#teacher').find('#portrait-holder').children().first();
+    selectTeacher(firstFrame.data('teacher'));
+
+    //change teacher on click
+    $("#teacher-slider .slide").click(function(){
+        if (!blockSelect){
+            var $this = $(this);
+            if ($this.hasClass('left')){
+                var direction = 'left';
+            } else if ($this.hasClass('right')){
+                var direction = 'right';
+            }
+            slideTeacher(direction);
+        }
+    });
+    $("#teacher-slider").swiperight(function(e){
+        slideTeacher('right');
+    });
+    $("#teacher-slider").swipeleft(function(e){
+        slideTeacher('left');
+    });
 
     TestimonialSlider.show('.cd-testimonials-wrapper', {
         selector: ".cd-testimonials > li",
         animation: "slide",
         controlNav: false,
         slideshow: true,
-        smoothHeight: false,
-        itemWidth: 447.5,
-        itemMargin: 0,
-        minItems: 2,
-        maxItems: 2,
+        smoothHeight: true,
+        minItems: 1,
+        maxItems: 1,
         start: function(){
             $('.cd-testimonials').children('li').css({
                 'opacity': 1,
@@ -405,18 +287,11 @@ $(function () {
         }
     });
 
-    //select first teacher when enter page
-    var firstFrame = $('#teacher').find('.teacher-list').children().first();
-    selectTeacher(firstFrame.data('teacher'));
-
-    //change teacher on click
-    $('.teacher-select').click(function () {
-        if (!blockSelect){
-            selectTeacher($(this).data('teacher'));
-        }
-    });
-
 });
+
+$(window).load(function(){
+    $('.ui-loader').remove();
+})
 
 var html5lightbox_options = {
     watermark: "Speak up - Học tiếng Anh online",
