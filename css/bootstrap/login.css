@@ -1,6 +1,5 @@
 body{
-    background: #FF9600
-;
+    background:url(/media/images/login/login-bg.png) center -30px no-repeat;
 }
 .form-signin
 {
@@ -44,10 +43,10 @@ body{
 }
 .account-wall
 {
-    margin-top: 120px;
-    padding: 30px 0px 20px 0px;
-    background-color: white;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 190px;
+    background-color: #0072BB;
+    border-radius: 15px;
+    -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
@@ -58,12 +57,12 @@ body{
     font-weight: 400;
     display: block;
 }
-.profile-img
-{
-    width: 120px;
-    height: 50px;
-    margin: -10px auto 20px;
-    display: block;
+.username{
+    border-radius: 0;
+}
+.password{
+    margin: 10px auto;
+    border-radius: 0;
 }
 .need-help
 {
@@ -74,24 +73,19 @@ body{
 .new-account
 {
    display: block;
-   margin: 20px;
    margin-top: 10px;
+   margin-left: 0;
 }
 
 .btn-login{
-    margin-left: auto;
-    margin-right: auto;
-    width: 130px;
+    margin:10px auto;
+    width: 100%;
+    font-weight: bold;
 }
 .test-error{
     color: red;
     margin-left: 20px;
 }
-.trai-img{
-    margin-top: 305px;
-    margin-left:35px;
-}
-.phai-img{
-    margin-top: 25px;
-    margin-left: 125px;
+.new-account, .need-help{
+    color: white;
 }
