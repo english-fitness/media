@@ -1,5 +1,11 @@
 body{
+    max-height: 768px;
+}
+.login-bg-1{
     background:url(/media/images/login/login-bg.png) center -30px no-repeat;
+}
+.login-bg-2{
+    background:url(/media/images/login/login-bg-2.png) center bottom no-repeat;
 }
 .form-signin
 {
@@ -44,11 +50,22 @@ body{
 .account-wall
 {
     margin-top: 190px;
-    background-color: #0072BB;
     border-radius: 15px;
     -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-box-1{
+    background-color: #0072BB;
+}
+.login-box-1 .new-account, .login-box-1 .need-help{
+    color:white;
+}
+.login-box-2{
+    background-color: white;
+}
+.login-box-2 .new-account, .login-box-2 .need-help{
+    color:#245ba7;
 }
 .login-title
 {
@@ -86,6 +103,7 @@ body{
     color: red;
     margin-left: 20px;
 }
-.new-account, .need-help{
-    color: white;
+.help-link{
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
