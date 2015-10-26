@@ -18,6 +18,12 @@
 .borderLeftGrey {border-left: 1px solid #CCCCCC !important;}
 .borderRightGrey {border-right: 1px solid #CCCCCC !important;}
 .borderBottomGrey {border-bottom: 1px solid #CCCCCC !important;}
+
+/* verticacl align */
+.vat {vertical-align: top;}
+.vam {vertical-align: middle;}
+.vab {vertical-align: bottom;}
+
 /* text-align class builder */
 .tAc {text-align: center;}
 .tAl {text-align: left;}
@@ -336,6 +342,7 @@
 .w214 {width: 214px;}
 .w230 {width: 214px;}
 .w250 {width: 250px;}
+.w280 {width: 280px;}
 .w300 {width: 300px;}
 .w350 {width: 350px;}
 .w400 {width: 400px;}
