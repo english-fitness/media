@@ -1,60 +1,160 @@
 body{
-    max-height: 768px;
+    height: 100vh;
+    font-familiy: Arial;
 }
-.login-bg-1{
-    background:url(/media/images/login/login-bg.png) center -30px no-repeat;
+
+/* background */
+
+@media only screen and (max-aspect-ratio: 16/9) {
+    .login-bg-1{
+        background:url(/media/images/login/login-bg.png) center top no-repeat;
+        background-size: auto 100%;
+    }
+    .login-bg-2{
+        background:url(/media/images/login/login-bg-2.png) center bottom no-repeat;
+        background-size: auto 100%;
+    }
 }
-.login-bg-2{
-    background:url(/media/images/login/login-bg-2.png) center no-repeat;
+@media only screen and (min-aspect-ratio: 16/9) {
+    .login-bg-1{
+        background:url(/media/images/login/login-bg.png) center top no-repeat;
+        background-size: 100% auto;
+    }
+    .login-bg-2{
+        background:url(/media/images/login/login-bg-2.png) center bottom no-repeat;
+        background-size: 100% auto;
+    }
 }
-.form-signin
+@media only screen and (aspect-ratio: 16/9) {
+    .login-bg-1{
+        background:url(/media/images/login/login-bg.png) center top no-repeat;
+        background-size: 100% 100%;
+    }
+    .login-bg-2{
+        background:url(/media/images/login/login-bg-2.png) center bottom no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+/* end background */
+
+/* logo */
+
+.logo{
+    margin-top: 3%;
+}
+@media only screen and (max-width: 480px) {
+    .logo{
+        height: 12%;
+    }
+}
+@media only screen and (min-width: 481px) and (max-width: 959px) {
+    .logo{
+        height: 8%;
+    }
+}
+@media only screen and (min-width: 960px) {
+    .logo{
+        width: 40%;
+    }
+}
+@media only screen and (orientation:landscape) and (max-width: 960px) and (max-height:480px) {
+    .logo{
+        height: 18%;
+    }
+}
+
+/* end logo */
+
+/* login-box */
+
+.login-box-container
 {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+    margin: 30vh auto 0 auto;
+    padding: 0 10px 0 10px;
+    font-size: 2.3vh;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
-{
-    margin-bottom: 20px;
+
+/* regular cellphone */
+@media only screen and (max-width:320px) {
+    .login-box-container
+    {
+        max-width: 100%;
+    }
 }
-.form-signin .checkbox
-{
-    font-weight: normal;
+/* larger phone */
+@media only screen and (min-width: 320px) and (max-width: 480px){
+    .login-box-container
+    {
+        max-width: 90%;
+    }
 }
-.form-signin .form-control
-{
-    position: relative;
-    font-size: 16px;
-    height: auto;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+/* tablets */
+@media only screen and (min-width: 481px) and (max-width: 959px){
+    .login-box-container
+    {
+        max-width: 60%;
+    }
 }
-.form-signin .form-control:focus
-{
-    z-index: 2;
+/* large screen portrait */
+@media only screen and (orientation:portrait) and (min-width:960px) {
+    .login-box-container
+    {
+        max-width: 60%;
+    }
 }
-.form-signin input[type="text"]
-{
-    margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+/* desktop, notebook */
+@media only screen and (orientation:landscape) and (max-aspect-ratio: 16/9) and (min-width:960px) {
+    .login-box-container
+    {
+        max-width: 33%;
+    }
 }
-.form-signin input[type="password"]
-{
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+/* desktop, notebook 16:9 */
+@media only screen and (orientation:landscape) and (min-aspect-ratio: 16/9) and (min-width:960px) {
+    .login-box-container
+    {
+        max-width: 28%;
+    }
 }
-.account-wall
-{
-    margin-top: 190px;
-    border-radius: 15px;
+
+/* iPad landscape */
+@media only screen and (orientation:landscape) and (width:1024px) and (height: 768px) {
+    .login-box-container
+    {
+        max-width: 48%;
+    }
+}
+
+@media only screen and (orientation:landscape) and (max-width: 960px) and (max-height:480px) {
+    .login-box-container
+    {
+        margin: 10vh auto 0 auto;
+        max-width: 50%;
+        font-size: 2.3vw;
+    }
+}
+@media only screen and (max-height:240px) {
+    .login-box-container
+    {
+        max-width: 80%;
+    }
+}
+
+.login-box{
+    border-radius: 2.3vmin;
     -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
+@media only screen and (min-width: 1367px) {
+    .login-box
+    {
+        border-radius: 20px;
+    }
+}
+
 .login-box-1{
     background-color: #0072BB;
 }
@@ -70,17 +170,76 @@ body{
 .login-title
 {
     color: #555;
-    font-size: 18px;
     font-weight: 400;
     display: block;
 }
-.username{
-    border-radius: 0;
+
+/* form */
+
+.form-signin
+{
+    padding: 5%;
+    margin: 0 auto;
 }
-.password{
-    margin: 10px auto;
-    border-radius: 0;
+.form-signin > input{
+    font-size: inherit;
 }
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 20px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    height: auto;
+    padding: 1.5vmin;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.username
+{
+    border-radius: 0.7vh 0.7vh 0 0;
+}
+.password
+{
+    margin: 1vmin auto;
+    border-radius: 0 0 0.7vh 0.7vh;
+}
+
+@media only screen and (orientation:landscape) and (max-width: 960px) and (max-height:480px) {
+    .username
+    {
+        border-radius: 0.7vw 0.7vw 0 0;
+    }
+    .password
+    {
+        border-radius: 0 0 0.7vw 0.7vw;
+    }
+}
+@media only screen and (min-width:1367px) {
+    .username
+    {
+        border-radius: 5px 5px 0 0;
+    }
+    .password
+    {
+        border-radius: 0 0 5px 5px;
+    }
+}
+
+/* end form */
+
+/* form bottom */
+
 .need-help
 {
    display: block;
@@ -97,13 +256,29 @@ body{
 .btn-login{
     margin:10px auto;
     width: 100%;
+    font-size: inherit;
     font-weight: bold;
+    border-radius:0.7vh;
 }
-.test-error{
+@media only screen and (orientation:landscape) and (max-width: 960px) and (max-height:480px) {
+    .btn-login{
+        border-radius:0.7vw;
+    }
+}
+@media only screen and (min-width:1366px) {
+    .btn-login{
+        border-radius:5px;
+    }
+}
+.login-box-1 > .form-signin > .test-error{
+    color: gold;
+}
+.login-box-2 > .form-signin > .test-error{
     color: red;
-    margin-left: 20px;
 }
 .help-link{
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
+/* end form bottom */
