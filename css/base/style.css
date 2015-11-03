@@ -1,6 +1,5 @@
 @import "bootstrap.icon.css";
-@import "bootstrap.css";
-@import "bootstrap-responsive.css";
+@import "bootstrap-custom.css";
 @import "common.css";
 
 /**
@@ -9,11 +8,13 @@
 a {
   color: #325da7;
 }
+/*
 .btn-primary {
     background-color: #325da7;
     border-color: #325da7;
     color: #FFFFFF;
 }
+*/
 .form-element-container {
     display: block;
     padding-top: 4px !important;
@@ -109,3 +110,16 @@ textarea[readonly]{
   background-color: #eeeeee;
 }
 
+.ui-menu .ui-menu-item{
+    font-size: 1.1em !important;
+    cursor: default !important;
+    padding: 2px .4em !important;
+    border: 1px solid rgba(255,255,255,0);
+}
+
+.ui-state-focus{
+    background-color: #ddd !important;
+    background-image: none !important;
+    margin: 0 !important;
+    border: 1px solid #ccc !important;
+}
