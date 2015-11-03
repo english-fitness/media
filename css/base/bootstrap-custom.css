@@ -248,11 +248,6 @@ input[type="file"] {
   padding-top: 6px;
 }
 
-.btn {
-  padding: 8px 12px;
-  font-weight: 500;
-}
-
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {

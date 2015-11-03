@@ -138,6 +138,7 @@ button.schedule{
     border:none;
     width:34px;
     height:34px;
+    padding: 0;
     background-color:#428bca;
     border-radius:5px;
     outline:none;
