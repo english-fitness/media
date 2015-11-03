@@ -7,7 +7,8 @@ function createBoard(id, trial, p2p, nuve, mode){
 		type: "POST", dataType: 'json', data:data,
 		success: function(data) {
 			if(data.success){
-				$('#whiteboard'+id).html(data.displayBoard);
+				var removeBoardLink = '<a href="javascript:removeWhiteboard(\'7688\', \'@1vb9hzmmy2k6mode2\')" class="fR pR5 clrRed">Xóa lớp ảo </a>';
+				$('#whiteboard'+id).html("").append($(data.displayBoard).css('float', 'left')).append(removeBoardLink);
 			}else{
 				alert("Không tạo được lớp học ảo, vui lòng kiểm tra lại!");
 			}
