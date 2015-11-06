@@ -256,18 +256,18 @@ $get_params = http_build_query($get_params);
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="robots" content="noindex,nofollow">
 		<title>Responsive FileManager</title>
-		<link rel="shortcut icon" href="/media/applications/filemanager/resources/img/ico/favicon.ico">
-		<link href="/media/applications/filemanager/resources/css/style.css" rel="stylesheet" type="text/css" />
-		<link href="/media/applications/filemanager/resources/js/jPlayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
+		<link rel="shortcut icon" href="../resources/img/ico/favicon.ico">
+		<link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="../resources/js/jPlayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
 	<!--[if lt IE 8]><style>
 	.img-container span, .img-container-mini span {
 	    display: inline-block;
 	    height: 100%;
 	}
 	</style><![endif]-->
-	<script src="/media/applications/filemanager/resources/js/plugins.js"></script>
-	<script src="/media/applications/filemanager/resources/js/jPlayer/jquery.jplayer/jquery.jplayer.js"></script>
-	<script src="/media/applications/filemanager/resources/js/modernizr.custom.js"></script>
+	<script src="../resources/js/plugins.js"></script>
+	<script src="../resources/js/jPlayer/jquery.jplayer/jquery.jplayer.js"></script>
+	<script src="../resources/js/modernizr.custom.js"></script>
 	<?php
 	if ($aviary_active){
 	if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) { ?>
@@ -348,7 +348,7 @@ $get_params = http_build_query($get_params);
 	   });
 	    }
 	</script>
-	<script src="/media/applications/filemanager/resources/js/include.js"></script>
+	<script src="..//resources/js/include.js"></script>
 </head>
 <body>
 	<input type="hidden" id="popup" value="<?php echo $popup; ?>" />
@@ -698,13 +698,13 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				  <a class="folder-link" href="dialog.php?<?php echo $get_params.rawurlencode($src)."&".uniqid() ?>">
 					  <div class="img-precontainer">
 							<div class="img-container directory"><span></span>
-							<img class="directory-img"  src="/media/applications/filemanager/resources/img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
+							<img class="directory-img"  src="..//resources/img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
 							</div>
 					  </div>
 				    <div class="img-precontainer-mini directory">
 							<div class="img-container-mini">
 						    <span></span>
-						    <img class="directory-img"  src="/media/applications/filemanager/resources/img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
+						    <img class="directory-img"  src="../resources/img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
 							</div>
 				    </div>
 			<?php if($file==".."){ ?>
@@ -947,7 +947,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
     <!-- loading div start -->
     <div id="loading_container" style="display:none;">
 	    <div id="loading" style="background-color:#000; position:fixed; width:100%; height:100%; top:0px; left:0px;z-index:100000"></div>
-	    <img id="loading_animation" src="/media/applications/filemanager/resources/img/storing_animation.gif" alt="loading" style="z-index:10001; margin-left:-32px; margin-top:-32px; position:fixed; left:50%; top:50%"/>
+	    <img id="loading_animation" src="../resources/img/storing_animation.gif" alt="loading" style="z-index:10001; margin-left:-32px; margin-top:-32px; position:fixed; left:50%; top:50%"/>
     </div>
     <!-- loading div end -->
 
