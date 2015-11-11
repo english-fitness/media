@@ -100,7 +100,7 @@ ul{
 
 /* header */
 #header-bg{
-	background:url(/media/home/img/landing-2/bg-m.png) no-repeat;
+	background:url(../../img/landing-2/bg-m.png) no-repeat;
 	height:2392px;
 }
 .su-logo{
@@ -230,7 +230,7 @@ ul{
     height: 1415px;
 }
 #teacher-bg{
-    background:url(/media/home/img/landing-2/bg2-m.png) no-repeat;
+    background:url(../../img/landing-2/bg2-m.png) no-repeat;
     height: 1415px;
 }
 #teacher-title{
@@ -248,11 +248,11 @@ ul{
 }
 #teacher-slider .slide.left{
     float: left;
-    background:url(/media/home/img/landing-2/arrow-left.png) right center no-repeat;
+    background:url(../../img/landing-2/arrow-left.png) right center no-repeat;
 }
 #teacher-slider .slide.right{
     float: left;
-    background:url(/media/home/img/landing-2/arrow-right.png) left center no-repeat;
+    background:url(../../img/landing-2/arrow-right.png) left center no-repeat;
 }
 #portrait-holder{
     width: 70%;
@@ -287,16 +287,16 @@ ul{
     min-height:20px;
 }
 .info.name{
-    background:url("../img/info-1.png") no-repeat 35px center;
+    background:url("../../img/info-1.png") no-repeat 35px center;
 }
 .info.location{
-    background:url("../img/info-2.png") no-repeat 35px center;
+    background:url("../../img/info-2.png") no-repeat 35px center;
 }
 .info.style{
-    background:url("../img/info-3.png") no-repeat 35px center;
+    background:url("../../img/info-3.png") no-repeat 35px center;
 }
 .info.achievement{
-    background:url("../img/info-4.png") no-repeat 35px center;
+    background:url("../../img/info-4.png") no-repeat 35px center;
 }
 .teacher-video{
     margin-top:50px;
@@ -326,7 +326,7 @@ ul{
     left:0;
     width:650px;
     height:360px;
-    background: url(../img/lightbox-video-play.png) no-repeat center;
+    background: url(../../img/lightbox-video-play.png) no-repeat center;
     background-color:rgba(120,120,120,0.5);
     border: 5px solid white;
     /*Mozilla*/
@@ -346,7 +346,7 @@ ul{
     height: 1418px;
 }
 #tuition-bg{
-    background:url(/media/home/img/landing-2/bg3-m.png) no-repeat;
+    background:url(../../img/landing-2/bg3-m.png) no-repeat;
     height: 1418px;
 }
 #tuition-title{
@@ -408,7 +408,7 @@ ul{
     /*margin-top: -300px;*/
 }
 #testimonials-bg{
-    background:url(/media/home/img/landing-2/bg4-m.png) no-repeat;
+    background:url(../../img/landing-2/bg4-m.png) no-repeat;
     height: 438px;
     /*top:300px;*/
 }
