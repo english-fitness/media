@@ -105,7 +105,10 @@ label.hint {
 }
 input[readonly],
 select[readonly],
-textarea[readonly]{
+textarea[readonly],
+input[disabled],
+select[disabled],
+textarea[disabled]{
   cursor: default;
   background-color: #eeeeee;
 }

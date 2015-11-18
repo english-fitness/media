@@ -19,7 +19,9 @@ if ($isAdmin){
 $thumbPath = '../../../thumbs/';
 
 if(!is_dir($current_path)){
-	mkdir($current_path, 0755);
+	$old_umask = umask(0);
+	mkdir($current_path, 0775);
+	umask($old_umask);
 }
 
 mb_internal_encoding('UTF-8');
