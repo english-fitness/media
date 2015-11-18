@@ -1,11 +1,12 @@
-var startTime = ['09:00', '09:40' ,'10:20','11:00', '11:40', '12:20', '13:00', '13:40', '14:20', '15:00', '15:40', '16:20',
+var startTime = ['07:00', '07:40', '08:20', '09:00', '09:40' ,'10:20','11:00', '11:40', '12:20', '13:00', '13:40', '14:20', '15:00', '15:40', '16:20',
 				'17:00', '17:40', '18:20', '19:00', '19:40', '20:20', '21:00', '21:40', '22:20'];
 				
-var endTime = ['09:30', '10:10', '10:50','11:30', '12:10', '12:50', '13:30', '14:10', '14:50', '15:30', '16:10', '16:50',
+var endTime = ['07:30', '08:10', '08:50', '09:30', '10:10', '10:50','11:30', '12:10', '12:50', '13:30', '14:10', '14:50', '15:30', '16:10', '16:50',
 				'17:30', '18:10', '18:50', '19:30', '20:10', '20:50', '21:30', '22:10', '22:50'];
 
 var momentStartTime = [];
 var momentEndTime = [];
+var timeslotCount = startTime.length;
 
 var today = moment().format("YYYY-MM-DD");
 
@@ -17,8 +18,8 @@ for (var i in endTime){
 }
 
 function parseTimeslot(slotNumber){
-	var dayIndex = Math.floor(slotNumber/21);
-	var slotIndex = slotNumber - dayIndex*21;
+	var dayIndex = Math.floor(slotNumber/timeslotCount);
+	var slotIndex = slotNumber - dayIndex*timeslotCount;
 
 	var timeslot = {
 		day: dayIndex,
@@ -31,13 +32,14 @@ function parseTimeslot(slotNumber){
 //day start with 0
 function getTimeslot(day, time){
 	timeslot = startTime.indexOf(time);
+	console.log(timeslotCount);
 	if (timeslot > -1){
-		return day*21 + timeslot;
+		return day*timeslotCount + timeslot;
 	} else {
 		var slot = moment(today + " " + time);
 		for (var i = 0; i < momentStartTime.length - 1; i++){
 			if (slot.isBetween(momentStartTime[i], momentStartTime[i+1])){
-				return day*21 + i;
+				return day*timeslotCount + i;
 			}
 		}
 	}
